@@ -1,0 +1,113 @@
+﻿<Window x:Class="SnakesStore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SnakesStore"
+        mc:Ignorable="d"
+        Title="Магазин Снэков" Height="450" Width="800">
+
+    <Grid>
+        <TabControl>
+            <!-- Вкладка для клиентов -->
+            <TabItem Header="Покупатели">
+                <StackPanel>
+                    <!-- Поиск -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                        <Label Content="Поиск:">
+                            
+                        </Label>
+                        <TextBox x:Name="SearchTextBox" Width="200" Margin="5"/>
+                        <Button x:Name="SearchButton" Content="Найти" Click="SearchButton_Click" Margin="5" />
+                    </StackPanel>
+
+                    <!-- DataGrid -->
+                    <DataGrid x:Name="CustomersDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Покупатель ID" Binding="{Binding CustomerId}" />
+                            <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" />
+                            <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" />
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" />
+                            <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!-- Кнопки -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                        <Button x:Name="AddCustomerButton" Content="Добавить" Click="AddCustomerButton_Click" Margin="5" />
+                        <Button x:Name="EditCustomerButton" Content="Изменить" Click="EditCustomerButton_Click" Margin="5" />
+                        <Button x:Name="DeleteCustomerButton" Content="Удалить" Click="DeleteCustomerButton_Click" Margin="5" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+
+
+            <!-- Orders Tab -->
+            <TabItem Header="Заказы">
+                <StackPanel>
+                    <DataGrid Name="OrdersDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Заказ ID" Binding="{Binding OrderId}" />
+                            <DataGridTextColumn Header="Покупатель ID" Binding="{Binding CustomerId}" />
+                            <DataGridTextColumn Header="Дата заказа" Binding="{Binding OrderDate}" />
+                            <DataGridTextColumn Header="Полная стоимость" Binding="{Binding TotalAmount}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                        <Button Name="AddOrderButton" Content="Добавить" Click="AddOrderButton_Click" Margin="5" />
+                        <Button Name="EditOrderButton" Content="Изменить" Click="EditOrderButton_Click" Margin="5" />
+                        <Button Name="DeleteOrderButton" Content="Удалить" Click="DeleteOrderButton_Click" Margin="5" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            
+            
+
+             <!--OrderItems Tab--> 
+            <TabItem Header="Предмет заказа">
+                <StackPanel>
+                    <DataGrid Name="OrderItemsDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Предмет заказа ID" Binding="{Binding OrderItemId}" />
+                            <DataGridTextColumn Header="Заказ ID" Binding="{Binding OrderId}" />
+                            <DataGridTextColumn Header="Снэк ID" Binding="{Binding SnackId}" />
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Price}" />
+                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                        <Button Name="AddOrderItemButton" Content="Добавить" Click="AddOrderItemButton_Click" Margin="5" />
+                        <Button Name="EditOrderItemButton" Content="Изменить" Click="EditOrderItemButton_Click" Margin="5" />
+                        <Button Name="DeleteOrderItemButton" Content="Удалить" Click="DeleteOrderItemButton_Click" Margin="5" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            
+
+            <!-- Snacks Tab -->
+            <TabItem Header="Снэки">
+                <StackPanel>
+                    <DataGrid Name="SnacksDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Снэк ID" Binding="{Binding SnackId}" />
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
+                            <DataGridTextColumn Header="Категория" Binding="{Binding Category}" />
+                            <DataGridTextColumn Header="Описание" Binding="{Binding Description}" />
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Price}" />
+                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                        <Button Name="AddSnackButton" Content="Добавить" Click="AddSnackButton_Click" Margin="5" />
+                        <Button Name="EditSnackButton" Content="Изменить" Click="EditSnackButton_Click" Margin="5" />
+                        <Button Name="DeleteSnackButton" Content="Удалить" Click="DeleteSnackButton_Click" Margin="5" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+
+
+</Window>
